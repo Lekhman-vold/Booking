@@ -1,3 +1,3 @@
 def register_models():
-    from .facility import Facility, Rental
+    from .facility import Room, Booking
     from .user import User

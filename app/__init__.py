@@ -18,7 +18,8 @@ def create_app():
 
     from app.models import register_models
     from app.routes import register_routes
-    from app.models.facility import Facility, Rental
+    from app.models.facility import Room, Booking
+    from app.models.user import User
 
     app = Flask(__name__)
 
@@ -38,8 +39,9 @@ def create_app():
     db.init_app(app)
 
     admin = Admin(app, name='Booking system', template_mode='bootstrap4')
-    admin.add_view(ModelView(Facility, db.session))
-    admin.add_view(ModelView(Rental, db.session))
+    admin.add_view(ModelView(Room, db.session))
+    admin.add_view(ModelView(Booking, db.session))
+    admin.add_view(ModelView(User, db.session))
 
     @app.errorhandler(500)
     def server_error(error):

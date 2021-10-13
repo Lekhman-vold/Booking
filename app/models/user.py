@@ -11,6 +11,7 @@ class User(db.Model):
     last_name = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     role_id = db.Column(db.Integer, nullable=False)
+    booking = db.relationship('Booking', backref='user', lazy=True)
 
     def __repr__(self):
         return f'User <{self.first_name} {self.last_name}>'
